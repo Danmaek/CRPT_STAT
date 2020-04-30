@@ -22,7 +22,7 @@ def PGCD(arr):
 
     # si b == 0
     if b == 0 :
-        #lirePGCD(arr)
+        lirePGCD(arr)
         return arr
 
     # insere le tableau de l'étape du calcul du pgcd
@@ -82,7 +82,5 @@ def coeffBezout(x, y):
     print("PGCD(",x, ",", y, ") =", a, "×", u, "+ (", b, "*", v,")")
     return [a,u,b,v]
 
-# resultat sous la forme [r0,u,r1,v]
-
-#result = coeffBezout(123,452)
-#print(result)
+# result = coeffBezout(71,131)
+# print(result)
