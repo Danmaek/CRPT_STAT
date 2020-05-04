@@ -26,5 +26,5 @@ def exponentiation_rapide(x, n):
         n_ = (n - 1)/2
         return x * exponentiation_rapide(x_,n_)
 
-print("Solution : ", exponentiation_rapide(2,15))
 
+print("Solution : ", exponentiation_rapide(2,8))

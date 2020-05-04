@@ -12,7 +12,7 @@ import math
 def experience():
     i = 0
     cpt_f = 0
-    # pour 100, trop précis
+    # pour 10 lancés
     while i < 10:
         if random.randint(0,1) == 0 :
             cpt_f = cpt_f + 1
@@ -100,7 +100,6 @@ def main():
 
     plt.show()
     plt.close()
-
 
 main()
 
