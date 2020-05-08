@@ -4,12 +4,12 @@
 # https://www.youtube.com/watch?v=bWHY9Eto2wU
 # https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide
 
-# On recherche u et v tel que : pgcd(r0, r1) = u*r0 + v*r1
+# On recherche u et v tel que : pgcd(r0, r1) = a*u + b*v
 
 # PGCD Euclide, renvoit un tableau (format calcul PGCD)
 # Le valeur du PGCD est en arr[0][2] conformément à la mise en forme calcul PGCD
 def calculPGCD(a, b):
-    #Initialisation
+    # Mise en forme du tableau avant exécution
     arr = [[a, nfois(a,b), b, a%b]]
     return PGCD(arr)
 
@@ -20,12 +20,12 @@ def PGCD(arr):
     # b <- reste a%b
     b = arr[0][3]
 
-    # si b == 0
+    # Si b == 0
     if b == 0 :
         lirePGCD(arr)
         return arr
 
-    # insere le tableau de l'étape du calcul du pgcd
+    # Insere le tableau de l'étape du calcul du pgcd
     else :
         arr.insert(0, [a, nfois(a,b), b, a%b])
         return PGCD(arr)
@@ -38,16 +38,16 @@ def nfois(a, b):
         a = a - b
     return cpt
 
-# lecture du tableau pgcd formaté
+# Lecture du tableau pgcd formaté
 def lirePGCD(arr):
     for i in range(len(arr)):
         print(arr[i][0]," = ", arr[i][1], " * ", arr[i][2]," + ", arr[i][3])
 
-# calcul des coefficients de bezout
+# Calcul des coefficients de bezout
 def coeffBezout(x, y):
     pgcd_arr = calculPGCD(x,y)
 
-    # test de la valeur du PGCD
+    # Test de la valeur du PGCD
     if(pgcd_arr[0][2] == 1):
         print("Les entier ", x, " et ", y, " sont premiers entre eux.")
     else:
@@ -55,7 +55,7 @@ def coeffBezout(x, y):
         print('echec - fin coeffBezout')
         return -1
 
-  # Initialisation r0, u, r1 et v
+  # Initialisation a, u, b et v
     u = 1
     a = pgcd_arr[1][0]
     v = - pgcd_arr[1][1]
@@ -63,16 +63,16 @@ def coeffBezout(x, y):
 
     if(len(pgcd_arr) > 2):
         for i in range(2, len(pgcd_arr)):
-            #décalage de r0
+            # Décalage de r0
             tmp_u = v
-            # décalage de a
+            # Décalage de a
             tmp_a = pgcd_arr[i][0]
-            # on rassemble les facteurs du même nombre v
+            # On rassemble les facteurs du même nombre v
             tmp_v = u + (v * (-pgcd_arr[i][1]))
-            # décalage de v
+            # Décalage de v
             tmp_b = pgcd_arr[i][2]
 
-            # affectation au bv
+            # Affectation a, u, b, v
             a = tmp_a
             u = tmp_u
 

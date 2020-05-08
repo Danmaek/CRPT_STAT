@@ -16,17 +16,17 @@ def cles(p,q) :
     # Calcul de phi(n), indicatrice d'Euler en n
     phi_n = (p - 1) * (q - 1)
     
-    # formule prévisible car parcourt incrémental
+    # Formule prévisible car parcourt incrémental (pour réduire le temps de calcul nécessaire)
     for e in range(2, phi_n - 1) :
         if estPremier(e, phi_n) == 1 :
             break
     
-    # formule aléatoire
+    # # Formule aléatoire
     # for e in random.randrange(2, phi_n):        
     #     if estPremier(e, phi_n):
     #         break
 
-    # formule avec calcul des coefficients de Bezout
+    # Formule avec calcul des coefficients de Bezout
     arr = []
     arr_bezout = coeffBezout(e,phi_n)
     print("e,",e,"  phi_n",phi_n)
@@ -37,9 +37,9 @@ def cles(p,q) :
     if d < 0 : 
         d = d + phi_n
 
-    # Formule sans coefficient de Bezout
-    # ici on a : [a * d + b * v = 1] <= on trouve => 
-    # on cherche un u à la seconde expression
+    # # Formule sans coefficient de Bezout
+    # Ici on a : [a * d + b * v = 1] <= on trouve => 
+    # On cherche un u à la seconde expression
     # for d in range(1, phi_n - 1):
     #     un = (e * d) % phi_n 
     #     if un == 1 : 
@@ -51,7 +51,7 @@ def cles(p,q) :
     print(arr)
     return arr
 
-# renvoie a = 1 si a et b sont premier
+# Renvoie a = 1 si a et b sont premier
 def estPremier(a, b):
     while (a != b):
         if a > b:
@@ -71,19 +71,16 @@ def RSA():
     print("Cles publics " + str(cle_public))
     print("Cles privees " + str(cle_privee))
 
-    # transformation du texte en list
-
-    # chiffrement avec le couple
+    # Chiffrement avec le couple
     encrypted_msg_bytes = []
     for char in text:
         byte = 0 if char == " " else ord(char) - 96
         encrypted_msg_bytes.append(exponentiation_rapide(byte if char == " " else ord(char) - 96, cle_public[0]) %  cle_public[1])
-    
 
-    # vérification : déchiffrement des valeurs
+    # Vérification : déchiffrement des valeurs
     decrypted_msg_chars = []
     for byte in encrypted_msg_bytes:
-        decrypted_byte = exponentiation_rapide(byte, cle_privee[0]) % cle_public[1] 
+        decrypted_byte = exponentiation_rapide(byte, cle_privee[0]) % cle_privee[1] 
         decrypted_msg_chars.append(" " if decrypted_byte == 0 else chr(decrypted_byte + 96))
 
     print("message",text)
@@ -93,9 +90,7 @@ def RSA():
 
 RSA()
 
-# utiliser le couple (p q) = (71 131) 13,21// son premier entre eux
-# la première valeur de e trouvé sera 3 et sera utilisé
-# la clé publique doit correspondre à (e, n) = (3, 9301)
-# la clé privée doit correspondre à (d , n) = (6067, 9301)
-
-# 75, 85
+# Utiliser le couple (p q) = (71 131)// son premier entre eux
+# La première valeur de e trouvé sera 3 et sera utilisé
+# La clé publique doit correspondre à (e, n) = (3, 9301)
+# La clé privée doit correspondre à (d , n) = (6067, 9301)

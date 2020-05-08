@@ -2,13 +2,12 @@ import matplotlib.pyplot as plt
 import random
 import math
 # Choisir la loi : 
-# v.a.r X => "Nombre de lancé d'une pièce non truqué tombant sur face sur 10 lancés"
+# v.a.r X => "Nombre de lancé d'une pièce non truquée tombant sur face sur 10 lancés"
 
 # Question 1
 # L'espérance de Xbarre_N consiste à calculer l'espérance de la moyenne empirique.
 
-
-# experience sur 10 lancés, renvoie le nombre de face
+# Experience sur 10 lancés, renvoie le nombre de face
 def experience():
     i = 0
     cpt_f = 0
@@ -34,20 +33,25 @@ def main():
     exp = []
     
     i = 0
-    # pour 10 000
+    # pour 100 000
     while i < 100000:
         gen = experience()
         exp.append(gen)
         i = i + 1
 
-    # entierté
-    m1 = calculMoyenneExperience(exp)     
-    s1 = calculEcartTypeExperience(exp, m1)
+# Pour éviter du lag sur la fenêtre ainsi qu'un temps de calcul elevé,
+# nous avons décidé de ne pas afficher les points pour les expériences sur 100000 et 10000
+
+    # Entier
+    m1 = calculMoyenneExperience(exp) # Moyenne
+    s1 = calculEcartTypeExperience(exp, m1) # Ecart-type
     print("Pour 100 000 experiences, m =",m1,"; s =",s1)
 
-    m_arr = [ m1 for x in exp]
-    s_arr_plus = [ m1 + s1 for x in exp]
-    s_arr_minus = [ m1 - s1 for x in exp]
+    # Calcul des "droites" de moyenne et de l'écart-type en + et -
+    m_arr = [ m1 for x in exp] # Tableau moyenne
+    s_arr_plus = [ m1 + s1 for x in exp] # Tableau écart-type en +
+    s_arr_minus = [ m1 - s1 for x in exp] # Tableau écart-type en -
+
     plt.figure()
     plt.subplot(511)
     plt.title('Moyenne et ecart type en fonction de la loi X')

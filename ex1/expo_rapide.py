@@ -3,6 +3,7 @@
 # écrire un programme d’exponentiation rapide
 # https://fr.wikipedia.org/wiki/Exponentiation_rapide
 def exponentiation_rapide(x, n):
+    # Initialisation des variables internes
     x_ = 0
     n_ = 0
 
@@ -11,20 +12,19 @@ def exponentiation_rapide(x, n):
         print("[", x,",", n,"] --> Résultat avant remonté ", x,".")
         return x
 
+    # Cas n est pair
     # x^n = (x²)^(n/2)
     elif n%2 == 0 :
-        print(n, " est pair.")
         x_ = x * x
         n_ = n / 2
         return exponentiation_rapide(x_,n_)
     
+    # Cas n est impair
     # x^n = x*(x²)^((n-1)/2)
     else :
-        print(n, " est impair.")
-        print("On garde ", x," pour la remontée.")
         x_ = x * x
         n_ = (n - 1)/2
         return x * exponentiation_rapide(x_,n_)
 
-
-print("Solution : ", exponentiation_rapide(2,8))
+print("Test exponentiation rapide avec les valeur 2 et 8")
+print("Résultat : ", exponentiation_rapide(2,8))

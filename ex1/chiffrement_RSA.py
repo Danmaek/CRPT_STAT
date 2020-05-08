@@ -34,15 +34,6 @@ def cles(p,q) :
     for e in range(2, phi_n - 1) :
         if estPremier(e, phi_n) == 1 :
             break
-    
-    # *------------------INUTILE ----------------------------------------
-    # Calcul de l'exposant de déchiffrement d, entier naturel inverse de e % phi(n) inférieur à phi(n)
-    # par l'algorithme d'euclide étendu
-    # arr_bezout = coeffBezout(e,phi_n)
-
-    # a = arr_bezout[0] # correspond à e
-    # b = arr_bezout[2] # correspond à phi_n
-    # *----------------------------------------------------------
 
     # TODO
     # ici on a : [a * d + b * v = 1] <= on trouve => a * d = 1 [r1]
